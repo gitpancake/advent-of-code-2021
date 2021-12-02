@@ -1,0 +1,29 @@
+{
+  "name": "advent-of-code-2021",
+  "version": "1.0.0",
+  "description": "My 2021 Advent of Code",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "tsc -w",
+    "start": "node dist/index.js",
+    "start:day1": "node dist/day01"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gitpancake/advent-of-code-2021.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gitpancake/advent-of-code-2021/issues"
+  },
+  "homepage": "https://github.com/gitpancake/advent-of-code-2021#readme",
+  "devDependencies": {
+    "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "@types/node": "^16.11.11"
+  }
+}
