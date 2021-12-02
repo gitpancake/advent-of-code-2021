@@ -1,4 +1,4 @@
-# advent-of-code-2021
+# Advent of Code
 
 My 2021 Advent of Code
 
