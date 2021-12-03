@@ -1,7 +1,23 @@
 import { SubmarineDepthDetector } from './day01';
 
-const SubmarineDepthData = new SubmarineDepthDetector('./sources/day01.txt');
+class AdventOfCode {
+	depthLines: {}[] = [];
 
-const depthData = SubmarineDepthData.getDepthLines();
+	withDay1() {
+		const SubmarineDepthData = new SubmarineDepthDetector();
 
-console.log(depthData);
+		this.depthLines = SubmarineDepthData.getDepthLines();
+
+		SubmarineDepthData.calculateMovingIncreases();
+	}
+
+	build() {
+		return this.depthLines;
+	}
+}
+
+const _adventOfCode = new AdventOfCode();
+
+_adventOfCode.withDay1();
+
+_adventOfCode.build();

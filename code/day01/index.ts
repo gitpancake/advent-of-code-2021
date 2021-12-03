@@ -1,28 +1,76 @@
-const fs = require('fs');
+import { DepthLine } from 'code/types/DepthLine';
+import { FileReader } from '../helpers/fileReader';
 
 export class SubmarineDepthDetector {
-	data = [];
+	data: Array<string> = [];
 
-	constructor(dataFile: string) {
-		const rawData = fs.readFileSync(dataFile, 'UTF-8');
-		this.data = rawData.split(/\r?\n/);
+	constructor() {
+		const _fileReader = new FileReader('./sources/day01.txt');
+
+		this.data = _fileReader.ConvertFileToArray();
 	}
 
-	getDepthLines() {
+	getDepthLines(): DepthLine[] {
 		if (!this.data || !this.data.length) {
 			throw new Error('No data supplied!');
 		}
 
 		let prevValue = 0;
 
-		return this.data.map((line: string) => {
-			const message = Number(line) > prevValue ? '(increased)' : '(decreased)';
+		const messageDecider = (value: number) => {
+			if (value > prevValue) {
+				return '(increased)';
+			} else {
+				return '(decreased)';
+			}
+		};
 
-			prevValue = Number(line);
+		const test: DepthLine[] = this.data.map((line: string) => {
+			const depth = Number(line);
 
-			const newValue = `${line} ${message}`;
+			const increment = messageDecider(depth);
 
-			return newValue;
+			prevValue = depth;
+
+			return {
+				depth,
+				increment,
+			};
 		});
+
+		return test;
+	}
+
+	calculateMovingIncreases() {
+		let numInstances = 0;
+		let prevValue = 0;
+
+		const newData = this.data.map((_, index) => {
+			if (index === 0) {
+				return;
+			}
+
+			const firstWindow: number[] = this.data
+				.slice(index, index + 3)
+				.map((val) => Number(val));
+
+			const reduction = firstWindow.reduce((a, b) => (a += b));
+
+			return reduction;
+		});
+
+		newData.forEach((number) => {
+			if (!number) {
+				return;
+			}
+
+			if (number > prevValue) {
+				numInstances++;
+			}
+
+			prevValue = number;
+		});
+
+		console.log(numInstances);
 	}
 }
