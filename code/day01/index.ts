@@ -71,6 +71,6 @@ export class SubmarineDepthDetector {
 			prevValue = number;
 		});
 
-		console.log(numInstances);
+		return numInstances;
 	}
 }
