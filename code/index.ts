@@ -22,6 +22,9 @@ class AdventOfCode {
 		const _dayThree = new DayThree();
 
 		_dayThree.Part1();
+		const dayThreePart2 = _dayThree.Part2();
+
+		console.log(dayThreePart2);
 	}
 
 	build() {
