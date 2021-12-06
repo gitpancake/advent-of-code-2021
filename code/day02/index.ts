@@ -48,6 +48,6 @@ export class SubmarineMovement {
 			}
 		});
 
-		console.log(position.horizontal * position.depth);
+		return position.horizontal * position.depth;
 	}
 }
